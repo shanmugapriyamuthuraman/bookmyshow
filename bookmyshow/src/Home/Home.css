@@ -1,7 +1,13 @@
 .home-container{
     display:flex;
-    flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
-   
+    flex-direction: row;
+    justify-content: space-between;
+    width:90%;
+    margin:auto;
+    cursor: pointer;
+}
+.head{
+    width:90%;
+    margin:auto;
 }

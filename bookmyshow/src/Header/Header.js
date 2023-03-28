@@ -38,10 +38,6 @@ const Header = () => {
     <div className='banner'>
       <img src='https://assets-in.bmscdn.com/promotions/cms/creatives/1675080138999_web.jpg' width='100%'/>
     </div>
-   
-       
-  
-
     </div>
   )
 }
