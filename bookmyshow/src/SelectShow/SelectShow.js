@@ -1,8 +1,6 @@
 import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import Movies from "../Home/Movies.json"
-
-
 import './SelectShow.css'
 
 const SelectShow = ()=> {
@@ -10,7 +8,7 @@ const SelectShow = ()=> {
   const {ids}=useParams()
 let getData=Movies.find((e)=>e.id==ids)
 
-const navigate=useNavigate();
+const navigate=useNavigate(); 
 
 const bookingTicket = () =>{
   navigate(`/bookingticket/${getData.moviename}`)
@@ -26,7 +24,7 @@ const bookingTicket = () =>{
           <button onClick={()=>bookingTicket()}>Booking Ticket </button>
         </div>
     </div>
-      
+    
   </>
   )
 }

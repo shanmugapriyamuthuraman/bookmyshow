@@ -59,6 +59,8 @@
 .logoinp input{
     height:30px;
     width:90%;
+    border-radius: 10px 10px 10px 10px;
+    border:none;
     padding:0.2rem;
 }
 .banner{

@@ -19,6 +19,7 @@ const Product = ({product}) => {
         display="flex"
         height="340"
         image={product.image}
+       // border-radius="25px !important"
       />
         </Card>
     <h3>{product.moviename}</h3>

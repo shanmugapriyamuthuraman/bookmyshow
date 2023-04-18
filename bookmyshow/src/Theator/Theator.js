@@ -3,30 +3,37 @@ import "./Theator.css"
 import Movies from '../Home/Movies.json'
 import moment from "moment/moment"
 import Footer from '../Footer/Footer'
-import { useParams } from 'react-router-dom'
-const Theator = ({product}) => {
-    console.log(product)
-    console.log(Movies)
-    const {ticket}=useParams()
-    console.log(ticket);
-    let fetchData=Movies.find((e)=>e.moviename==ticket)
+import { useNavigate, useParams } from 'react-router-dom'
 
-    const date1= new Date()
-    const date2=date1.getDate()
-    const date3=new Date()
-    const date4=date3.getDate()+1
-    console.log()
-    const date5=new Date()
-    const date6=date5.getDate()+2
-    let tt="10:45 Am"
-    let current=moment(tt,"HH:mm a")
-    console.log(current);
-    let tt1="02:45 Pm"
-    let current1=moment(tt1,"HH:mm ")
-    console.log(current1);
-    let tt2="06:45 Pm"
-    let current2=moment(tt2,"HH:mm a")
-    console.log(current2);
+const Theator = () => {
+  const navigate = useNavigate()
+  const { ticket } = useParams()
+  console.log(ticket);
+  let fetchData = Movies.find((e) => e.moviename == ticket)
+  const date1 = new Date()
+  const date2 = date1.getDate()
+  const currentTime = moment().format('LT')
+  console.log(currentTime);
+  const date3 = new Date()
+  const date4 = date3.getDate() + 1;
+  const date5=new Date()
+  const date6=date5.getDate() + 2;
+  console.log()
+
+
+  //let current = new Date
+  // console.log(current);
+
+  let tt = "10.30 Am"
+  let current = moment(tt, "HH:mm a")
+  let tt1 = "02:45 Pm"
+  let current1 = moment(tt1, "HH:mm a")
+  const cur=current1._i;
+  console.log(cur)
+  console.log(current1,"l");
+  let tt2 = "06:45 Pm"
+  let current2 = moment(tt2, "HH:mm a")
+  console.log(current2);
   return (
     <>
       <div className='Theatormainpage'>
@@ -35,83 +42,135 @@ const Theator = ({product}) => {
             <h1> {fetchData.moviename}-Tamil</h1>
           </div>
         </div>
-          <div className='Theatorcontainer'>
-            <div className='Theatorhead'>
-              <div className='Theatorcontent'>
-                <div className='Theatordate1'>
-                    {date2}
-                </div>
-                <div className='Theatordate'>
-                  {date4}
-                </div>
-                <div className='Theatordate'>
-                  {date6}
-                </div>
+
+
+        <div className='Theatorcontainer'>
+          <div className='Theatorhead'>
+            <div className='Theatorcontent'>
+              <div className='Theatordate1'>
+                {date2}
               </div>
+              <div className='Theatordate'>
+                {date4}
+              </div>
+              <div className='Theatordate'>
+              {date6}
+              </div>
+
+            </div>
             <div className='Theatorcontentend'>
               <div className='language'>
-                  <h4>Tamil-2D</h4>
+                <h4>Tamil-2D</h4>
               </div>
-            </div>
-            </div>
-          </div>  
-          <div className='Theatorbackpage'>
-            <div className='Theatorcontainer'> 
-              <div className='Theatredisplay'>
-              
-                <div className='Theatorname'>
-                  <h3>Sathiyam Cinemas : Rayapettah, Chennai </h3>
-                </div>
-              <div className='Theatretime'>
-                <div className='Theatretime1'>
-                    {current._i}
-                </div>
-                <div className='Theatretime1'>
-                    {current1._i}
-                </div>
-                <div className='Theatretime1'>
-                    {current2._i}
-                </div>
-              </div>
-            </div>  
-            <div className='Theatredisplay'>
-              
-              <div className='Theatorname'>
-                <h3>TPV Multiplex Cinema : Alankulam, Tirunelveli </h3>
-              </div>
-              <div className='Theatretime'>
-                <div className='Theatretime1'>
-                    {current._i}
-                </div>
-                <div className='Theatretime1'>
-                    {current1._i}
-                </div>
-                <div className='Theatretime1'>
-                    {current2._i}
-                </div>
-              </div>
-            </div> 
-            <div className='Theatredisplay'>
-              
-              <div className='Theatorname'>
-                <h3>Udhayam Theatre : Ashokpillar, Chennai </h3>
-              </div>
-              <div className='Theatretime'>
-                <div className='Theatretime1'>
-                    {current._i}
-                </div>
-                <div className='Theatretime1'>
-                    {current1._i}
-                </div>
-                <div className='Theatretime1'>
-                    {current2._i}
-                </div>
-              </div>
-            </div> 
             </div>
           </div>
-          <Footer/>
-      </div> 
+        </div>
+
+        <div className='extra'>
+
+          <div className='Theatorbackpage'>
+            <div className='Theatorcontainer'>
+              <div className='Theatresection'>
+                <div className='Theatredisplay'>
+                  <div className='Theatorname'>
+                    <h3>Sathiyam Cinemas : Rayapettah, Chennai </h3>
+                  </div>
+                  <div className='Theatretime'>
+                    {currentTime == current._i ? 
+                    <>
+                      <div className='Theatretime1' onClick={() => navigate(`/firsttheatre/${"Sathiyam Cinimas"}`)}>
+                        {current._i}
+                      </div>
+                      </> : null
+                    }
+                    {
+                      currentTime >= current1._i ? 
+                      <>
+                        <div className='Theatretime1' onClick={() => navigate(`/firsttheatre/${"Sathiyam Cinimas"}`)}>
+                          {current1._i}
+                        </div>
+                        </> : null
+                    }
+                    {
+                      currentTime >current2._i ? <>
+                        <div className='Theatretime1' onClick={() => navigate(`/firsttheatre/${"Sathiyam Cinimas"}`)}>
+                          {current2._i}
+                        </div>
+                      </> : null
+                    }
+
+
+
+
+
+
+                  </div>
+                </div>
+                <div className='Theatredisplay'>
+
+                  <div className='Theatorname'>
+                    <h3>TPV Multiplex Cinema : Alankulam </h3>
+                  </div>
+                  
+                  <div className='Theatretime'>
+                    {currentTime == current._i ? (
+                        <div className='Theatretime1' onClick={() => navigate(`/secondtheatre/${"Tpv Cinemas"}`)}>
+                        {current._i}
+                      </div>
+                    ):null
+                  }
+                  {currentTime > current1._i ? (
+                        <div className='Theatretime1' onClick={() => navigate(`/secondtheatre/${"Tpv Cinemas"}`)}>
+                        {current1._i}
+                      </div>
+                    ):null
+                  }
+                  {currentTime > current2._i ? (
+                        <div className='Theatretime1' onClick={() => navigate(`/secondtheatre/${"Tpv Cinemas"}`)}>
+                        {current2._i}
+                      </div>
+                    ):null
+                  }
+                  </div>
+                </div>
+
+                <div className='Theatredisplay'>
+
+                  <div className='Theatorname'>
+                    <h3>Udhayam Theatre : Ashokpillar, Chennai </h3>
+                  </div>
+                 
+                  <div className='Theatretime'>
+                  {currentTime == current._i?(
+                     <div className='Theatretime1' onClick={() => navigate(`/thirdtheatre/${"Udhayam Cinemas"}`)}>
+                     {current._i}
+                   </div>
+                  ):null
+                  }
+                   {currentTime > current1._i?(
+                     <div className='Theatretime1' onClick={() => navigate(`/thirdtheatre/${"Udhayam Cinemas"}`)}>
+                     {current1._i}
+                   </div>
+                  ):null
+                  }
+                   {currentTime > current2._i?(
+                     <div className='Theatretime1' onClick={() => navigate(`/thirdtheatre/${"Udhayam Cinemas"}`)}>
+                     {current2._i}
+                   </div>
+                  ):null
+                  }
+                   
+                    
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <Footer />
+      </div>
 
     </>
   )

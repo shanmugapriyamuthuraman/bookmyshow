@@ -14,7 +14,7 @@ const Home = () => {
     <div className='home'>
       <div  className='head'><h2>Recommended Movies</h2></div>
       <div className='home-container'>
-      {Movies?.map((product,index)=>(
+      {Movies.map((product,index)=>(
         <Product product={product} key={index} />
       ))}
       </div>
